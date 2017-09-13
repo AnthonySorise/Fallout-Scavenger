@@ -47,6 +47,7 @@ header>h1{
     font-size: 12vmin;
     margin:auto;
     text-shadow: 2px 2px #00ff00;
+    color:black;
 }
 
 #mainContentContainer{
@@ -92,7 +93,11 @@ header>h1{
     display:flex;
 }
 #gameArea>.cardRow>.cardContainer{
-    width:15%;
-    height:95%;
+    width:6.5vw;
+    height:9.1vw;
     margin:auto;
+    background-image: url("images/card_back.png");
+    background-size: cover;
+    background-position: center, center;
+    background-repeat:no-repeat;
 }
