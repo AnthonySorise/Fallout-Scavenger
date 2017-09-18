@@ -8,18 +8,51 @@
     </head>
     <body>
         <header>
-            <div id="logoContainer">
-                <img src="images/logo.png"/>
+            <div id="leftHeader">
+                <img src = "images/logo.png">
+                <div id="buttonContainer">
+                    <button id = "resetGameButton" class="btn btn-success">New Game</button>
+                </div>
             </div>
-            <h1>Fallout Scavenger</h1>
+            <div id="titleContainer">
+                    <h1>Fallout Scavenger</h1>
+            </div>
         </header>
         <div id="mainContentContainer">
             <div id="gameInfo">
-                <h2>STATS: </h2>
-                <h3 id="statTimesPlayed">Times played: 0</h3>
-                <h3 id = statNumTries>Number of tries: 0</h3>
-                <h3 id = "statAccuracy">Accuracy: </h3>
-                <button id = "resetGameButton" class="btn btn-success">New Game</button>
+                <div id = "healthContainer">
+                    <div id="healthData">
+                        <h2>HP: </h2>
+                        <h2 id="health">100 / 100</h2>
+                        <h2>DR: </h2>
+                        <h2 id="damageReduction">0%</h2>
+                    </div>
+                    <div id = "healthImgContainer">
+                    </div>
+                </div>
+
+                <div id="effects">
+                    <h2>EFFECT LOG: </h2>
+                    <ul>
+                        <li id="effect1"></li>
+                        <li id="effect2"></li>
+                        <li id="effect3"></li>
+                        <li id="effect4"></li>
+                        <li id="effect5"></li>
+                    </ul>
+                </div>
+                <div id="cardDetails">
+                    <h2>CARD DETAILS: </h2>
+                    <h3 id="cardName"></h3>
+                    <h3 id="cardEffect1"></h3>
+                    <h3 id="cardEffect2"></h3>
+                </div>
+                <div id="stats">
+                    <h2>STATS: </h2>
+                    <h3 id = statNumTries>Turns: 0</h3>
+                    <h3 id = "statAccuracy">Accuracy: </h3>
+                    <h3 id="statTimesPlayed">Games: 0</h3>
+                </div>
             </div>
             <div id="gameArea">
                 <div class="cardRow">

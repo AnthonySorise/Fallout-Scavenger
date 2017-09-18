@@ -1,103 +1,167 @@
 @font-face {
-    font-family: 'Fallout-Font';
-    src:  url('font/Overseer.otf') format('woff2')
+font-family: 'Fallout';
+src:  url('font/Overseer.otf') format('woff2')
+}
+
+@font-face {
+font-family: 'FixedSys';
+src:  url('font/FSEX300.ttf') format('woff2')
 }
 
 body{
-    font-family: Fallout-Font, Arial;
-    background-color: black;
-    background-image: url("images/Background.png");
-    background-size: 71.5% auto;
-    background-attachment: fixed;
-    background-position: 72.5% bottom;
-    background-repeat:no-repeat;
-}
-
-img{
-    max-width: 100%;
-    width:auto;
-    max-height: 100%;
-    height:auto;
-    position:relative;
-    left:50%;
-    top:50%;
-    transform:translate(-50%, -50%);
+background-color: black;
+background-image: url("images/Background.png");
+background-size: 73% auto;
+background-attachment: fixed;
+background-position: 90% bottom;
+background-repeat:no-repeat;
+box-sizing: border-box;
 }
 
 header{
-    height: 20vh;
-    margin-bottom: 5vh;
-    display: flex;
-    background-image: url("images/header.png");
-    background-size: 100% 100%;
-    background-repeat:no-repeat;
-    border-bottom: 4px solid #00ff00;
+font-family: Fallout, Arial;
+height: 20vh;
+margin-bottom: 3vh;
+display: flex;
+background-image: url("images/header.png");
+background-size: 100% 100%;
+background-repeat:no-repeat;
+border-bottom: 4px solid #00ff00;
 }
-header>#logoContainer{
-    width:auto;
-    height:90%;
-    justify-content: flex-start;
+header>#leftHeader{
+    width:25%;
     position:relative;
-    top:50%;
-    transform:translateY(-50%);
-    margin: 0 1vw 0 1vw;
+    left:20px;
+    display:flex;
 }
 
-header>h1{
+header>#leftHeader>img{
+    display:inline-block;
+    position:relative;
+    width: 50%;
+    height:auto;
+    top:50%;
+    transform:translateY(-50%);
+}
+
+header>#leftHeader>#buttonContainer{
+    display:inline-block;
+    width:45%;
+    height:100%;
+}
+
+header>#leftHeader>#buttonContainer>button{
+    height:25%;
+    width:100%;
+    margin:5px 0 0 5px;
+    font-size:1.25vw;
+}
+
+header>#titleContainer{
+    width:75%;
+    display:flex;
+}
+
+header>#titleContainer>h1{
     font-size: 12vmin;
-    margin:auto;
     text-shadow: 2px 2px #00ff00;
     color:black;
     font-style: italic;
+    margin:auto;
 }
 
 #mainContentContainer{
-    display: flex;
+display: flex;
 }
 
 #gameInfo{
-    height:75vh;
-    width: 20%;
-    position:relative;
-    border:4px solid #00ff00;
-    color: #00ff00;
-    background-image: url("images/gameInfoBackground.png");
-    background-size: 65% auto;
-    background-repeat:no-repeat;
-    background-position: right bottom;
+font-family: FixedSys, Arial;
+height:75vh;
+width: 25%;
+position:relative;
+display:inline-block;
+border:4px solid #00ff00;
+color: #00ff00;
+left: 20px;
+background-image: url("images/gameInfoBackground.png");
+background-size: 55% auto;
+background-repeat:no-repeat;
+background-position: right bottom;
 }
 #gameInfo h2{
-    margin-left: 1vw;
-    font-size: 6vmin;
-
+    font-size: 3.25vmin;
+    margin:3px 0 0 .25em;
 }
 #gameInfo h3{
-    margin-left: 1vw;
-    font-size: 4vmin;
+    font-size: 2.5vmin;
+    margin:0 0 0 1em;
 }
-#gameInfo>button{
-    height:10%;
-    width:30%;
+#gameInfo>#healthContainer{
+    width:100%;
+    height: 30%;
+    display:flex;
+}
+#gameInfo>#healthContainer>#healthData{
+    display:inline-block;
+    width:50%;
+    margin: 20px 0 40px 0;
+}
+#gameInfo>#healthContainer>#healthData>#health{
+    margin:0 0 0 1em;
+}
+#gameInfo>#healthContainer>#healthData>#damageReduction {
+    margin:0 0 0 1em;
+}
+#gameInfo>#healthContainer>#healthImgContainer{
+    display:inline-block;
+    width:50%;
+    height:100%;
+    border-bottom: 4px solid #00ff00;
+    border-left: 4px solid #00ff00;
+    background-image: url("images/health_100.png");
+    background-size: 100% 100%;
+    background-repeat:no-repeat;
+    background-position: top right;
+}
+#gameInfo>#effects{
+    width:100%;
+    height:40%;
+    font-size: 2vmin;
+}
+#gameInfo>#cardDetails{
+    width:50%;
+    height:auto;
     position: absolute;
-    right:50%;
-    top:75%;
-    transform:translateX(-50%);
+    top:62%;
+    margin-bottom: 20px;
+}
+#gameInfo>#stats{
+    width:100%;
+    height:auto;
+    position: absolute;
+    bottom:0;
+    margin-bottom: 20px;
 }
 
 #gameArea{
     height:75vh;
-    width:70%;
-    margin:auto;
+    width:75%;
+    display:inline-block;
 }
 #gameArea>.cardRow{
     height:33%;
     display:flex;
+    position:relative;
+    /*Card Flip Styling*/
+    perspective: 1200px;
 }
 #gameArea>.cardRow>.cardContainer{
     width:7.5vw;
     height:10.5vw;
     margin:auto;
-    position:relative;
+    /*Card Flip Styling*/
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
 }
 #gameArea>.cardRow>.cardContainer .frontCard{
     width:100%;
@@ -106,6 +170,7 @@ header>h1{
     background-size: 100% 100%;
     background-position: center, center;
     background-repeat:no-repeat;
+    transform: rotateY( 180deg );
 }
 #gameArea>.cardRow>.cardContainer .backCard{
     width:100%;
@@ -115,8 +180,9 @@ header>h1{
     background-size: 100% 100%;
     background-position: center, center;
     background-repeat:no-repeat;
-
 }
-#gameArea>.cardRow>.cardContainer .flippedCard{
-    display:none;
+#gameArea>.cardRow>.cardContainer.flippedCard{
+    /*Card Flip Styling*/
+    transform: rotateY( 180deg );
+    backface-visibility: hidden;    /*needed for firefox compatibility*/
 }
