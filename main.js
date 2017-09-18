@@ -35,8 +35,8 @@ var enemy_protectron = {
     audio_attack: "audio/enemy_protectron_attack.wav",
     audio_destroyed: "audio/enemy_protectron_destroyed.wav"
 };
-var enemy_deathClaw = {
-    name:"Death Claw",
+var enemy_deathclaw = {
+    name:"Deathclaw",
     type:"enemy",
     image:"images/cardFront_enemy_deathclaw.png",
     hpAttack: 20,
@@ -74,7 +74,7 @@ var aid_nukaCola = {
     audio: "audio/aid_nukaCola.wav"
 };
 var aid_radAway = {
-    name:"Rad Away",
+    name:"RadAway",
     type:"aid",
     image:"images/cardFront_aid_radAway.png",
     hpRecovery: 30,
@@ -90,7 +90,7 @@ var aid_stimpak = {
 var cardObjects = [
     enemy_ghoul,
     enemy_protectron,
-    enemy_deathClaw,
+    enemy_deathclaw,
     gear_pistol,
     gear_plasmaRifle,
     gear_miniNuke,
