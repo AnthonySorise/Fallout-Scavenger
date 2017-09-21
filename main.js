@@ -431,7 +431,7 @@ function resetGame(){
     setTimeout(function(){ //this is here in the event of a game reset during the setIntervals in gainHealth()/loseHealth()/gainDamageReduction() - which results in wrong information being displayed in the UI
         $("#health").text(health + " / 100");
         $("#healthImgContainer").css("background-image", "url(images/health_100.png)");
-    }, 500);
+    }, 750);
 }
 
 //AUDIO
