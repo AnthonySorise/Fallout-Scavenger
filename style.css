@@ -128,6 +128,9 @@ background-position: right bottom;
     height:40%;
     font-size: 2vmin;
 }
+#gameInfo>#effects>ul>li{
+    list-style: none;
+}
 #gameInfo>#cardDetails{
     width:50%;
     height:auto;
@@ -176,7 +179,7 @@ background-position: right bottom;
     width:100%;
     height:100%;
     position:absolute;
-    background-image: url("images/cardBack.png");
+    background-image: url("images/card-back.png");
     background-size: 100% 100%;
     background-position: center, center;
     background-repeat:no-repeat;
