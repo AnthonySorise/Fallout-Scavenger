@@ -61,14 +61,14 @@ var gear_plasmaRifle = {
     type:"gear",
     image:"images/card-front_gear_plasma-rifle.png",
     damageResistance: 25,
-    audio: "audio/gear_plasmaRifle.wav"
+    audio: "audio/gear_plasma-rifle.wav"
 };
 var gear_miniNuke = {
     name:"Mini Nuke",
     type:"gear",
     image:"images/card-front_gear_mini-nuke.png",
     damageResistance: 35,
-    audio: "audio/gear_miniNuke.wav"
+    audio: "audio/gear_mini-nuke.wav"
 };
 //Aid Objects
 var aid_nukaCola = {
@@ -76,14 +76,14 @@ var aid_nukaCola = {
     type:"aid",
     image:"images/card-front_aid_nuka-cola.png",
     hpRecovery: 20,
-    audio: "audio/aid_nukaCola.wav"
+    audio: "audio/aid_nuka-cola.wav"
 };
 var aid_radAway = {
     name:"RadAway",
     type:"aid",
     image:"images/card-front_aid_rad-away.png",
     hpRecovery: 30,
-    audio: "audio/aid_radAway.wav"
+    audio: "audio/aid_rad-away.wav"
 };
 var aid_stimpak = {
     name:"Stimpak",

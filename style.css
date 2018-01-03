@@ -1,11 +1,11 @@
 @font-face {
 font-family: 'Fallout';
-src:  url('font/Overseer.otf') format('woff2')
+src:  url('font/overseer.otf') format('woff2')
 }
 
 @font-face {
 font-family: 'FixedSys';
-src:  url('font/FSEX300.ttf') format('woff2')
+src:  url('font/fixedsys.ttf') format('woff2')
 }
 
 body{
