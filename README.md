@@ -1,17 +1,34 @@
-# Memory Match
+# Fallout Scavenger
 
-## Overview
+<h3>A Fallout themed Match Game with added game mechanics.</h3>
 
-> Memory match is a game with 18 cards face down and the player has to try and match all 9 pairs of matching cards by remembering the position of the cards.
-Once the player has match 2 cards they will be displayed face up until all pairs have been matched. Once all pairs have been matched the user will be
-displayed a message that they have won the game. As the user clicks through the cards stats will be kept letting the user know how many attempts and the
-accuracy of their choices.
+![Alt text](/images/readme.png?raw=true "Fallout Scavenger")
 
-> <a href="https://docs.google.com/presentation/d/1zlSHYatpaPsrq4LuOtyuE-RRIom4vRo-lXovQ0zPV0U/pub?start=false&loop=false&delayms=3000" target="_blank">Design Overview</a>
+###
+<h4 class="text-center">Rules</h4>
+<ul>
+    <li>
+        Mismatch two cards and loss health (HP) from radiation poisoning.
+    </li>
+    <li>
+        If you lose all your health (HP), you lose!
+    </li>
+    <li>
+        Match two cards to remove them from the board.
+    </li>
+    <li>
+        Remove all cards from the board to win!
+    </li>
+</ul>
+<h4 class="text-center">Card Types</h4>
+<ul>
+    <li>
+        Enemy: Failing to match a card with a red background results in health (HP) loss.
+    </li>
+    <li>
+        Aid: Successfully matching a card with a green background results in health (HP) recovery.
+    </li>
+    <li>
+        Weapon: Successfully matching a card with a blue background results in damage resistance (DR).
+    </li>
 
-> <a href="https://drive.google.com/open?id=0B3R9g7F9YRS6SHd3Q3lRdWF0RkU" target="_blank">Flow Document</a>
-
-> ### Versions
-> - Version 1.0 (v1.0) - <a href="https://github.com/Learning-Fuze/memory_match/tree/v1.0">View Details</a>
-> - Version 0.5 (v0.5) - <a href="https://github.com/Learning-Fuze/memory_match/tree/v0.5">View Details</a>
-> - Version 0.1 (v0.1) - <a href="https://github.com/Learning-Fuze/memory_match/tree/v0.1">View Details</a>
