@@ -10,7 +10,7 @@ src:  url('font/fixedsys.ttf') format('woff2')
 
 body{
 background-color: black;
-background-image: url("images/Background.png");
+background-image: url("images/background.png");
 background-size: 73% auto;
 background-attachment: fixed;
 background-position: 90% bottom;
