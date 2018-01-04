@@ -2,6 +2,7 @@ $(document).ready(initializeApp);
 function initializeApp(){
     distributeCardFronts();
     applyClickHandlers()
+    $('#instructions').modal('show')
 }
 
 function applyClickHandlers(){
@@ -137,7 +138,6 @@ function distributeCardFronts(){
 }
 
 function handleClick(){
-    console.log(this);
     if(canClick === true && this!==firstCardClicked && $(this).hasClass("flippedCard") === false) {
         audio_cardFlip();
         $(this).addClass("flippedCard");
@@ -363,8 +363,15 @@ function effect_useAid(card){
 }
 
 function updateEffectList(){
-    for(var i = 1; i <=5; i++){
-        console.log(effectMessages[effectMessages.length-i] !== "")
+    let numOfMessages = 5;
+    if($(window).width() <= 1800){
+        numOfMessages = 3;
+    }
+    if($(window).width() <= 980){
+        numOfMessages = 2;
+    }
+
+    for(var i = 1; i <=numOfMessages; i++){
         if(effectMessages[effectMessages.length-i] !== ""){
             let li = "#effect"+i;
             $(li).text(effectMessages[effectMessages.length-i]).css("list-style", "square");
