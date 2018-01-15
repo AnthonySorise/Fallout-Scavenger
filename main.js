@@ -1,15 +1,5 @@
-$(document).ready(initializeApp);
-function initializeApp(){
-    distributeCardFronts();
-    applyClickHandlers()
-    $('#instructions').modal('show')
-}
-
-function applyClickHandlers(){
-    $(".cardContainer").on("click", handleClick);
-    $("#resetGameButton").on("click", resetGame);
-}
-
+//instantiate OOP
+var audioHandler = null;
 //global variables
 var firstCardClicked = null;
 var secondCardClicked = null;
@@ -18,100 +8,22 @@ var canClick = true;
 var health = 100;
 var effectMessages = ["", "", "", "", ""];
 var damageReduction = 0;
-
 //stats
 var timesPlayed = 0;
 var numberOfTries = 0;
 var accuracy = 0;
 
-//Enemy Objects
-var enemy_ghoul = {
-    name:"Ghoul",
-    type:"enemy",
-    image:"images/card-front_enemy_ghoul.png",
-    hpAttack: 10,
-    audio_attack: "audio/enemy_ghoul_attack.wav",
-    audio_destroyed: "audio/enemy_ghoul_destroyed.wav"
-};
-var enemy_protectron = {
-    name:"Protectron",
-    type:"enemy",
-    image:"images/card-front_enemy_protectron.png",
-    hpAttack: 15,
-    audio_attack: "audio/enemy_protectron_attack.wav",
-    audio_destroyed: "audio/enemy_protectron_destroyed.wav"
-};
-var enemy_deathclaw = {
-    name:"Deathclaw",
-    type:"enemy",
-    image:"images/card-front_enemy_deathclaw.png",
-    hpAttack: 20,
-    audio_attack: "audio/enemy_deathclaw_attack.wav",
-    audio_destroyed: "audio/enemy_deathclaw_destroyed.wav"
-};
-//Gear Objects
-var gear_pistol = {
-    name:"Pistol",
-    type:"gear",
-    image:"images/card-front_gear_pistol.png",
-    damageResistance: 15,
-    audio: "audio/gear_pistol.wav"
-};
-var gear_plasmaRifle = {
-    name:"Plasma Rifle",
-    type:"gear",
-    image:"images/card-front_gear_plasma-rifle.png",
-    damageResistance: 25,
-    audio: "audio/gear_plasma-rifle.wav"
-};
-var gear_miniNuke = {
-    name:"Mini Nuke",
-    type:"gear",
-    image:"images/card-front_gear_mini-nuke.png",
-    damageResistance: 35,
-    audio: "audio/gear_mini-nuke.wav"
-};
-//Aid Objects
-var aid_nukaCola = {
-    name:"Nuka Cola",
-    type:"aid",
-    image:"images/card-front_aid_nuka-cola.png",
-    hpRecovery: 20,
-    audio: "audio/aid_nuka-cola.wav"
-};
-var aid_radAway = {
-    name:"RadAway",
-    type:"aid",
-    image:"images/card-front_aid_rad-away.png",
-    hpRecovery: 30,
-    audio: "audio/aid_rad-away.wav"
-};
-var aid_stimpak = {
-    name:"Stimpak",
-    type:"aid",
-    image:"images/card-front_aid_stimpak.png",
-    hpRecovery: 40,
-    audio: "audio/aid_stimpak.wav"
-};
-var cardObjects = [
-    enemy_ghoul,
-    enemy_protectron,
-    enemy_deathclaw,
-    gear_pistol,
-    gear_plasmaRifle,
-    gear_miniNuke,
-    aid_nukaCola,
-    aid_radAway,
-    aid_stimpak];
+$(document).ready(function(){
+    audioHandler = new AudioHandler();
 
-function getCardObject(card){
-    var cardImgURL = $(card).find(".frontCard").css("background-image");
-    for(var i = 0; i < cardObjects.length; i++) {
-        if (cardImgURL.includes(cardObjects[i].image)) {
-            return cardObjects[i];
-        }
-    }
-}
+    //apply click handlers
+    $(".cardContainer").on("click", handleClick);
+    $("#resetGameButton").on("click", resetGame);
+
+    distributeCardFronts();
+
+    $('#instructions').modal('show')
+});
 
 function distributeCardFronts(){
     var cardFronts = [];
@@ -139,7 +51,7 @@ function distributeCardFronts(){
 
 function handleClick(){
     if(canClick === true && this!==firstCardClicked && $(this).hasClass("flippedCard") === false) {
-        audio_cardFlip();
+        audioHandler.cardFlip();
         $(this).addClass("flippedCard");
         updateCardDetails(this);
         if (firstCardClicked === null) {
@@ -161,21 +73,21 @@ function compareCardPair(){
     canClick = false;
     //if they have the same frontCard image
     if (getCardObject(firstCardClicked).image === getCardObject(secondCardClicked).image) {
-        audio_cardMatchMade();
+        audioHandler.cardMatchMade();
         matchCounter += 1;
         // logEffect("Match made!");
         var matchCardType = getCardObject(firstCardClicked).type;
         switch(matchCardType) {
             case "enemy":
-                audio_enemyDestroyed(firstCardClicked);
+                audioHandler.enemyDestroyed(firstCardClicked);
                 effect_enemyDestroyed(firstCardClicked);
                 break;
             case "gear":
-                audio_gearAcquired(firstCardClicked);
+                audioHandler.gearAcquired(firstCardClicked);
                 effect_getGear(firstCardClicked);
                 break;
             case "aid":
-                audio_aidAcquired(firstCardClicked);
+                audioHandler.aidAcquired(firstCardClicked);
                 effect_useAid(firstCardClicked);
                 break;
         }
@@ -194,21 +106,21 @@ function compareCardPair(){
     else {  //if they don't match
         if(getCardObject(firstCardClicked).type === "enemy"){
             if(getCardObject(secondCardClicked).type === "enemy"){
-                audio_enemyAttack(firstCardClicked);
-                audio_enemyAttack(secondCardClicked);
+                audioHandler.enemyAttack(firstCardClicked);
+                audioHandler.enemyAttack(secondCardClicked);
                 effect_enemyAttack(firstCardClicked, secondCardClicked);
             }
             else{
-                audio_enemyAttack(firstCardClicked);
+                audioHandler.enemyAttack(firstCardClicked);
                 effect_enemyAttack(firstCardClicked);
             }
         }
         else if(getCardObject(secondCardClicked).type === "enemy"){
-            audio_enemyAttack(secondCardClicked);
+            audioHandler.enemyAttack(secondCardClicked);
             effect_enemyAttack(secondCardClicked)
         }
         else{
-            audio_radiation();
+            audioHandler.radiation();
             effect_radiationPoisoning();
         }
         setTimeout(function () {
@@ -381,21 +293,21 @@ function updateEffectList(){
 
 function checkWin(){
     if(matchCounter === 9){
-        audio_win();
+        audioHandler.win();
         logEffect("You Won!");
     }
 }
 
 function checkLose(){
     if(health <= 0){
-        audio_lose();
+        audioHandler.lose();
         logEffect("You Lose!");
         canClick = false;
     }
 }
 
 function resetGame(){
-    audio_restart();
+    audioHandler.restart();
     distributeCardFronts();
 
     //bring cards back and reset position
@@ -446,48 +358,4 @@ function resetGame(){
         $("#health").text(health + " / 100");
         $("#healthImgContainer").css("background-image", "url(images/health_100.png)");
     }, 750);
-}
-
-//AUDIO
-function audio_cardFlip(){
-    var audio = new Audio("audio/flip.wav");
-    audio.play();
-}
-function audio_cardMatchMade(){
-    var audio = new Audio("audio/match.wav");
-    audio.play();
-}
-function audio_enemyAttack(card){
-    var audio = new Audio(getCardObject(card).audio_attack);
-    audio.play();
-}
-function audio_enemyDestroyed(card){
-    var audio = new Audio(getCardObject(card).audio_destroyed);
-    audio.play();
-}
-function audio_gearAcquired(card){
-    var audio = new Audio(getCardObject(card).audio);
-    audio.play();
-}
-function audio_aidAcquired(card){
-    var audio = new Audio(getCardObject(card).audio);
-    audio.play();
-}
-function audio_radiation(){
-    var radiationSounds = ["audio/radiation01.wav", "audio/radiation02.wav", "audio/radiation03.wav"];
-    var randomIndex = Math.floor(Math.random()*(radiationSounds.length));
-    var audio = new Audio(radiationSounds[randomIndex]);
-    audio.play();
-}
-function audio_restart(){
-    var audio = new Audio("audio/restart.wav");
-    audio.play();
-}
-function audio_win(){
-    var audio = new Audio("audio/win.wav");
-    audio.play();
-}
-function audio_lose(){
-    var audio = new Audio("audio/lose.wav");
-    audio.play();
 }
