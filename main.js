@@ -16,6 +16,18 @@ var accuracy = 0;
 $(document).ready(function(){
     audioHandler = new AudioHandler();
 
+    //size card containers
+    if($(window).width()/14>$(window).height()/7){
+        $(".cardContainer")
+            .css("width", $(window).width()/14)
+            .css("height", $(window).width()/9.33)
+    }
+    else{
+        $(".cardContainer")
+            .css("width", $(window).height()/7)
+            .css("height", $(window).height()/4.66);
+    }
+
     //apply click handlers
     $(".cardContainer").on("click", handleClick);
     $("#resetGameButton").on("click", resetGame);
@@ -23,6 +35,19 @@ $(document).ready(function(){
     distributeCardFronts();
 
     $('#instructions').modal('show')
+});
+
+$(window).resize(function(){
+    if($(window).width()/14>$(window).height()/7){
+        $(".cardContainer")
+            .css("width", $(window).width()/14)
+            .css("height", $(window).width()/9.33)
+    }
+    else{
+        $(".cardContainer")
+            .css("width", $(window).height()/7)
+            .css("height", $(window).height()/4.66);
+    }
 });
 
 function distributeCardFronts(){
@@ -155,9 +180,11 @@ function updateCardDetails(card){
 
 function gainDamageReduction(DRgain){
     var newDR = damageReduction + DRgain;
+    $('#damageReduction').animate({ color: 'blue'}, 500);
     var increaseDR = setInterval(function () {
         if(damageReduction === newDR){
             clearInterval(increaseDR)
+            $('#damageReduction').animate({ color: '#00ff00'}, 500)
         }
         if(damageReduction < newDR) {    //redundant, but necessary (it overshoots otherwise)
             damageReduction += 1;
@@ -172,9 +199,11 @@ function gainHealth(healthGained){
     if( newHealth > 100){
         newHealth = 100;
     }
+    $('#health').animate({ color: 'blue' }, 500);
     var increaseHealth = setInterval(function () {
         if(oldHealth === newHealth || oldHealth === 100){
-            clearInterval(increaseHealth)
+            clearInterval(increaseHealth);
+            $('#health').animate({ color: '#00ff00'}, 500)
         }
         if(oldHealth < newHealth && oldHealth < 100) {
             oldHealth += 1;
@@ -182,7 +211,6 @@ function gainHealth(healthGained){
         }
         updateHealthImage();
     }, 45);
-
     health = newHealth;
 }
 
@@ -192,9 +220,11 @@ function loseHealth(damageTaken){
     if(newHealth < 0){
         newHealth = 0;
     }
+    $('#health').animate({ color: 'red' }, 500);
     var decreaseHealth = setInterval(function () {
         if(oldHealth === newHealth || oldHealth === 0){
             clearInterval(decreaseHealth)
+            $('#health').animate({ color: '#00ff00'}, 500)
         }
         if(oldHealth > newHealth && oldHealth !== 0) {
             oldHealth -= 1;
