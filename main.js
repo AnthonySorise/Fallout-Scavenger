@@ -16,7 +16,7 @@ var accuracy = 0;
 $(document).ready(function(){
     audioHandler = new AudioHandler();
 
-    //size card containers
+    //card container size
     if($(window).width()/14>$(window).height()/7){
         $(".cardContainer")
             .css("width", $(window).width()/14)
@@ -27,6 +27,15 @@ $(document).ready(function(){
             .css("width", $(window).height()/7)
             .css("height", $(window).height()/4.66);
     }
+
+    //health img container size
+    var healthImgWidth = $("#healthImgContainer").width();
+    var healthImgHeight = $("#healthImgContainer").height();
+    var smallestHealthImgSize = healthImgWidth;
+    if (healthImgHeight < smallestHealthImgSize){
+        smallestHealthImgSize = healthImgHeight;
+    }
+    $("#healthImgContainer").css("width", smallestHealthImgSize).css("height", smallestHealthImgSize);
 
     //apply click handlers
     $(".cardContainer").on("click", handleClick);
@@ -38,6 +47,7 @@ $(document).ready(function(){
 });
 
 $(window).resize(function(){
+    //card container size
     if($(window).width()/14>$(window).height()/7){
         $(".cardContainer")
             .css("width", $(window).width()/14)
@@ -48,6 +58,18 @@ $(window).resize(function(){
             .css("width", $(window).height()/7)
             .css("height", $(window).height()/4.66);
     }
+
+    //health img container size
+    $("#healthImgContainer").css("width", "50%").css("height", "32%");
+    var healthImgWidth = $("#healthImgContainer").width();
+    var healthImgHeight = $("#healthImgContainer").height();
+    var smallestHealthImgSize = healthImgWidth;
+    if (healthImgHeight < smallestHealthImgSize){
+        smallestHealthImgSize = healthImgHeight;
+    }
+    $("#healthImgContainer").css("width", smallestHealthImgSize).css("height", smallestHealthImgSize);
+
+    updateEffectList();
 });
 
 function distributeCardFronts(){
@@ -305,6 +327,14 @@ function effect_useAid(card){
 }
 
 function updateEffectList(){
+    //reset effect messages
+    for(var i = 1; i <=5; i++){
+        if(effectMessages[effectMessages.length-i] !== ""){
+            let li = "#effect"+i;
+            $(li).text("").css("list-style", "none");
+        }
+    }
+    //determine how many effect messages to display
     let numOfMessages = 5;
     if($(window).width() <= 1800){
         numOfMessages = 3;
@@ -312,7 +342,7 @@ function updateEffectList(){
     if($(window).width() <= 980){
         numOfMessages = 2;
     }
-
+    //display effect messages
     for(var i = 1; i <=numOfMessages; i++){
         if(effectMessages[effectMessages.length-i] !== ""){
             let li = "#effect"+i;
@@ -320,6 +350,8 @@ function updateEffectList(){
         }
     }
 }
+
+
 
 function checkWin(){
     if(matchCounter === 9){

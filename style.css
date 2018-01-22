@@ -68,23 +68,25 @@ header>#leftHeader{
 header>#leftHeader>img{
     display:inline-block;
     position:relative;
-    width: 12vw;
-    height:9.6vw;
+    width: 22vmin;
+    height:18vmin;
     top:50%;
     transform:translateY(-50%);
 }
 
 header>#leftHeader>#buttonContainer{
+    position:relative;
+    top:8%;
     display:inline-block;
     width:45%;
-    height:100%;
+    height:70%;
 }
 
 header>#leftHeader>#buttonContainer>button{
-    height:25%;
+    height:50%;
     width:100%;
     margin:5px 0 0 5px;
-    font-size:1.5vw;
+    font-size: 22px;
 }
 
 header>#leftHeader>#buttonContainer>button#instructionsButton{
@@ -153,8 +155,11 @@ background-position: right bottom;
 }
 #gameInfo>#healthContainer>#healthImgContainer{
     display:inline-block;
+    position: absolute;
+    right:0;
     width:50%;
-    height:12vw;
+    height:32%;
+    max-height: 33%;
     border-bottom: 4px solid #00ff00;
     border-left: 4px solid #00ff00;
     background-image: url("images/health_100.png");
@@ -246,27 +251,9 @@ background-position: right bottom;
     #gameInfo h3{
         font-size: 2vmin;
     }
-}
-
-@media screen and (max-width: 980px){
-    .modal-content>.modal-header{
-        font-size: 3.25vmin;
-    }
-    .modal-content{
-        font-size: 3.25vmin;
-    }
-    #gameInfo>#effects{
-        font-size: 2.6vmin;
-    }
-    #gameInfo h2{
-        font-size: 3.25vmin;
-    }
-    #gameInfo h3{
-        font-size: 2.6vmin;
-    }
-    header>#leftHeader>#buttonContainer>button{
-        height: 44%;
-        font-size: 22px;
+    header>#leftHeader>#buttonContainer{
+        height: 90%;
+        top:0;
     }
 }
 
