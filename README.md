@@ -1,6 +1,6 @@
 # Fallout Scavenger
 
-<h3>A Fallout themed Match Game with added game mechanics.</h3>
+<h3>A Fallout Themed Match Game with Added Game Mechanics</h3>
 
 ![Alt text](/images/readme.png?raw=true "Fallout Scavenger")
 
