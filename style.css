@@ -175,6 +175,12 @@ background-position: right bottom;
 #gameInfo>#effects>ul>li{
     list-style: none;
 }
+.blink{
+    animation: blink 1s linear infinite;
+}
+@keyframes blink {
+    50% { opacity: 0; }
+}
 #gameInfo>#cardDetails{
     width:60%;
     height:auto;
@@ -209,6 +215,7 @@ background-position: right bottom;
     /*Card Flip Styling*/
     transform-style: preserve-3d;
     transition: transform 0.5s;
+    cursor: pointer;
 }
 #gameArea>.cardRow>.cardContainer .frontCard{
     width:100%;
@@ -257,7 +264,7 @@ background-position: right bottom;
     }
 }
 
-/***** SCREEN SIZE MESSAGES *****/
+/***** SCREEN SIZE MESSAGE *****/
 .mobileVerticalMsg{
     font-family: FixedSys, Arial;
     color: #00ff00;

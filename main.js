@@ -122,7 +122,6 @@ function compareCardPair(){
     if (getCardObject(firstCardClicked).image === getCardObject(secondCardClicked).image) {
         audioHandler.cardMatchMade();
         matchCounter += 1;
-        // logEffect("Match made!");
         var matchCardType = getCardObject(firstCardClicked).type;
         switch(matchCardType) {
             case "enemy":
@@ -328,12 +327,8 @@ function effect_useAid(card){
 
 function updateEffectList(){
     //reset effect messages
-    for(var i = 1; i <=5; i++){
-        if(effectMessages[effectMessages.length-i] !== ""){
-            let li = "#effect"+i;
-            $(li).text("").css("list-style", "none");
-        }
-    }
+    $(".effectMessage").text("").css("list-style", "none");
+
     //determine how many effect messages to display
     let numOfMessages = 5;
     if($(window).width() <= 1800){
@@ -356,7 +351,12 @@ function updateEffectList(){
 function checkWin(){
     if(matchCounter === 9){
         audioHandler.win();
+        numberOfTries -= 1;
         logEffect("You Won!");
+        $("#effect1").addClass("blink")
+        (function blink() {
+            $('.blink').fadeOut(500).fadeIn(500, blink);
+        })();
     }
 }
 
@@ -365,6 +365,10 @@ function checkLose(){
         audioHandler.lose();
         logEffect("You Lose!");
         canClick = false;
+        $("#effect1").addClass("blink")
+        (function blink() {
+            $('.blink').fadeOut(500).fadeIn(500, blink);
+        })();
     }
 }
 
@@ -390,11 +394,7 @@ function resetGame(){
 
     //reset Logs
     effectMessages = ["", "", "", "", ""];
-    $("#effect1").text("").css("list-style", "none");
-    $("#effect2").text("").css("list-style", "none");
-    $("#effect3").text("").css("list-style", "none");
-    $("#effect4").text("").css("list-style", "none");
-    $("#effect5").text("").css("list-style", "none");
+    $(".effectMessage").removeClass("blink").text("").css("list-style", "none");
 
     //reset CardInfo
     $("#cardName").text("");
