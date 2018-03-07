@@ -353,7 +353,7 @@ function checkWin(){
         audioHandler.win();
         numberOfTries -= 1;
         logEffect("You Won!");
-        $("#effect1").addClass("blink")
+        $("#effect1").addClass("blink");
         (function blink() {
             $('.blink').fadeOut(500).fadeIn(500, blink);
         })();

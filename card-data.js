@@ -5,6 +5,7 @@ var enemy_ghoul = {
     image:"images/card-front_enemy_ghoul.png",
     hpAttack: 10,
     audio_attack: new Audio("audio/enemy_ghoul_attack.wav"),
+    audio_attack_dup: new Audio("audio/enemy_protectron_attack.wav"),
     audio_destroyed: new Audio("audio/enemy_ghoul_destroyed.wav")
 };
 var enemy_protectron = {
@@ -13,6 +14,7 @@ var enemy_protectron = {
     image:"images/card-front_enemy_protectron.png",
     hpAttack: 15,
     audio_attack: new Audio("audio/enemy_protectron_attack.wav"),
+    audio_attack_dup: new Audio("audio/enemy_protectron_attack.wav"),
     audio_destroyed: new Audio("audio/enemy_protectron_destroyed.wav")
 };
 var enemy_deathclaw = {
@@ -21,6 +23,7 @@ var enemy_deathclaw = {
     image:"images/card-front_enemy_deathclaw.png",
     hpAttack: 20,
     audio_attack: new Audio("audio/enemy_deathclaw_attack.wav"),
+    audio_attack_dup: new Audio("audio/enemy_deathclaw_attack.wav"),
     audio_destroyed: new Audio("audio/enemy_deathclaw_destroyed.wav")
 };
 //Gear Objects

@@ -34,7 +34,12 @@ function AudioHandler(){
         audio_cardMatchMade.play();
     };
     this.enemyAttack = function(card){
-        getCardObject(card).audio_attack.play();
+        if(getCardObject(card).audio_attack.paused){
+            getCardObject(card).audio_attack.play();
+        }
+        else{
+            getCardObject(card).audio_attack_dup.play();
+        }
     };
     this.enemyDestroyed = function(card){
         getCardObject(card).audio_destroyed.play();
