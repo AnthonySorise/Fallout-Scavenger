@@ -238,7 +238,6 @@ background-position: right bottom;
 #gameArea>.cardRow>.cardContainer.flippedCard{
     /*Card Flip Styling*/
     transform: rotateY( 180deg );
-    backface-visibility: hidden;    /*needed for firefox compatibility*/
 }
 
 /***** RESPONSIVE *****/
